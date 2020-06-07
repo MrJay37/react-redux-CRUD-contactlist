@@ -21,9 +21,7 @@ class Entry extends React.Component {
   }
 
   InputName(){
-    return <input value={this.state.name} placeholder="Enter name" onChange={this.handleChange} onSubmit={() => {
-      this.state.switchMode(this.state.id)
-      this.setState({mode: !this.state.mode})}} />
+    return <input value={this.state.name} placeholder="Enter name" onChange={this.handleChange} />
   }
 
   InputEmail(){
@@ -43,6 +41,7 @@ class Entry extends React.Component {
             this.state.switchMode(this.state.id)
             this.setState({mode: !this.state.mode})}}>Edit</button></td>
   }
+
   render(){
     return <tr>
       <td>{this.state.id+1}</td>

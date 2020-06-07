@@ -4,6 +4,9 @@ import Entry from '../containers/entry';
 
 class EntryList extends React.Component {
 
+  update(){
+    this.forceUpdate()
+  }
   render(){
     return <div><table className="Table">
       <thead ><tr>
@@ -14,8 +17,8 @@ class EntryList extends React.Component {
         <Entry key={person.id} {...person}
           onClickDel={() => {
             this.props.delEntry(person.id);
-            this.forceUpdate()}
-            }/>
+            this.update()}
+            } />
       ))}
       </tbody>
     </table>
