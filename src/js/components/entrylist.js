@@ -1,0 +1,40 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import Entry from '../containers/entry';
+
+class EntryList extends React.Component {
+  
+  render(){
+    return <div><table style={{width: "100%" }}>
+      <thead ><tr>
+        <th>Serial</th><th>Name</th><th>Email</th><th>Action</th>
+      </tr></thead>
+      <tbody>
+      {this.props.entry.map(person => (
+        <Entry key={person.id} {...person}
+          onClickDel={() => {
+            this.props.delEntry(person.id);
+            this.forceUpdate()}
+            }/>
+      ))}
+      </tbody>
+    </table>
+    <p>
+    Total entries: {this.props.entry.length}
+    </p>
+    </div>
+  }
+}
+
+EntryList.propTypes = {
+  entry: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired,
+  delEntry: PropTypes.func.isRequired
+}
+
+export default EntryList
