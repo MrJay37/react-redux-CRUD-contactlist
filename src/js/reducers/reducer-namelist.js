@@ -12,10 +12,11 @@ const nameList = (state = [], action) => {
       ]
 
     case 'DEL_ENTRY':
+      if(window.confirm('Confirm Delete?')){
       state.splice(action.id, 1)
       for(let i =action.id; i<state.length; i++){
         state[i].id -=1;
-      }
+      }}
       return state
 
     case 'SWITCH_MODE':
