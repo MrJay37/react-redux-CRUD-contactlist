@@ -5,9 +5,9 @@ import EntryList from '../containers/entrylist'
 class App extends React.Component {
   render(){
     return (
-      <div className="App">
+      <div>
         <h1>Contact List</h1>
-        <AddEntry />
+        <AddEntry/>
         <hr />
         <EntryList />
       </div>

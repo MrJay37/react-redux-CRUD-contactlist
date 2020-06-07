@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Entry from '../containers/entry';
 
 class EntryList extends React.Component {
-  
+
   render(){
-    return <div><table style={{width: "100%" }}>
+    return <div><table className="Table">
       <thead ><tr>
         <th>Serial</th><th>Name</th><th>Email</th><th>Action</th>
       </tr></thead>
@@ -19,7 +19,7 @@ class EntryList extends React.Component {
       ))}
       </tbody>
     </table>
-    <p>
+    <p className='Foot'>
     Total entries: {this.props.entry.length}
     </p>
     </div>

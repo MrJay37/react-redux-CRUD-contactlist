@@ -5,8 +5,8 @@ import {addEntry} from '../actions'
 const AddEntry = ({dispatch}) => {
   let name, email
 
-  return(<div>
-    <form onSubmit={e => {
+  return(
+    <form className="Form" onSubmit={e => {
       e.preventDefault()
       if(!name.value.trim()){
         return
@@ -19,11 +19,10 @@ const AddEntry = ({dispatch}) => {
       email.value=""
       name.value=""
     }}>
-    <input ref={node => (name = node)} placeholder="Enter Name" />
-    <input ref={node => (email = node)} placeholder="Enter E-Mail"/>
-    <input type="submit" value="Submit" />
+    <input className="f-Name" ref={node => (name = node)} placeholder="Enter Name" />
+    <input className="f-email"ref={node => (email = node)} placeholder="Enter E-Mail"/><br />
+    <input className="Submit" type="submit" value="Submit" />
     </form>
-    </div>
   )
 }
 
