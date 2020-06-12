@@ -1,57 +1,71 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.EntryCard{
+  margin: 15px 0 0 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.navbar{
+  justify-content: space-between !important;
 }
-h1{
-  background: blue;
+.TopHead{
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.LoginForm{
+  margin-left: 17.5%;
+  margin-right: 17.5%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: stretch;
-  padding: 5% 0 5% 0;
-  margin: 0;
-  color: yellow;
-}
-.Form{
-  padding-top: 4%;
-  padding-bottom: 2%;
-  text-align:center;
-  width: 100%
 }
 
-.f-Name{
-  margin: 0 5% 2% 5%
+.TopHead:hover{
+  color: white
+}
+.BottomPad{
+  padding: 10%
 }
 
-.f-email{
-  margin: 0 5% 2% 5%
+.Address{
+  text-align: right;
 }
 
-.Submit{
-  background: black;
-  border: none;
-  transform: scale(1.6);
-  color: white;
-  font-size: 10px;
-}
-.Table{
-  background: #1C1414;
-  color: white;
-  width: 100%;
+.Footrow{
+  height: 10%;
 }
 
-tbody{
+.input-group-text{
+  width: 6em
+}
+
+.AddContat{
+  padding-top: 2%
+}
+
+.modal-footer {
+    justify-content: flex-start !important;
+}
+
+.SignupLink{
+
+  margin-left: 17.5%;
+  margin-right: 17.5%;
+  font-size: 3.5vmin;
+  margin-top: 10px;
   text-align: center;
+  font-weight: lighter;
 }
 
-.Foot{
-text-align: center;
+.SignupLink button{
+  color: blue;
+  font-weight: lighter;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.errorAlert{
+  text-align: center;
+  font-size: 2vmin;
+  color: red;
+  margin-bottom: 15px;
 }
