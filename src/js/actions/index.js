@@ -1,17 +1,52 @@
-export const addEntry = (name, email) => ({
+export const addEntry = person => ({
   type: 'ADD_ENTRY',
-  name, email
+  person
 })
 
-export const delEntry = id => ({
-  type: 'DEL_ENTRY', id
+export const delEntry = key => ({
+  type: 'DEL_ENTRY', key
 })
 
-export const switchMode = id => ({
-  type: 'SWITCH_MODE', id
+export const editEntry = (key, person) => ({
+  type: 'EDIT_ENTRY', key, person
 })
 
-export const editEntry = (id, name, email) => ({
-  type: 'EDIT_ENTRY',
-  id, name, email
+export const updateList = () => ({
+  type: 'UPDATE_LIST'
+})
+
+export const writeToState = list => ({
+  type: 'WRITE_TO_STATE', list
+})
+
+export const login = (email, pw) => ({
+  type: "LOGIN", email, pw
+})
+
+export const logout = () =>({
+  type: 'LOGOUT'
+})
+
+export const isSigningUp = (bool) => ({
+  type: 'IS_SIGNING_UP', bool
+})
+
+export const signUp =(email, pw) => ({
+  type: "SIGNUP", email, pw
+})
+
+export const checkIfLoggedOut = () =>({
+  type: 'CHECKIFLOGGEDOUT'
+})
+
+export const fetchUID = () => ({
+  type: 'FETCHUID'
+})
+
+export const loginSuccess = () => ({
+  type: 'LOGINSUCCESS'
+})
+
+export const loginError = () => ({
+  type: 'LOGINERROR'
 })

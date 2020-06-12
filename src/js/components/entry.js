@@ -1,63 +1,50 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import {Redirect} from 'react-router-dom'
+import {Card, Button,Col, Row} from 'react-bootstrap'
 
 class Entry extends React.Component {
   constructor(props){
     super(props)
-    this.state = this.props
-    this.handleChange = this.handleChange.bind(this)
-    this.handleEmailChange = this.handleEmailChange.bind(this)
-  }
+      this.state={
+        redirect:false
+    }
 
-  handleChange(event){
-    this.setState({name: event.target.value})
-    this.state.editEntry(this.state.id, this.state.name, this.state.email)
+    this.goToEdit = this.goToEdit.bind(this)
   }
-
-  handleEmailChange(event){
-    this.setState({email: event.target.value})
-    this.state.editEntry(this.state.id, this.state.name, this.state.email)
-    return true
-  }
-
-  InputName(){
-    return <input value={this.state.name} placeholder="Enter name" onChange={this.handleChange} />
-  }
-
-  InputEmail(){
-    return <input value={this.state.email} placeholder="Enter email" onChange={this.handleEmailChange} />
-  }
-
-  modeIsTrue(){
-    return <td>
-            <button onClick={() => {
-            this.state.switchMode(this.state.id)
-            this.setState({mode: !this.state.mode})}}>Save</button></td>
-  }
-
-  modeIsFalse(){
-    return <td><button onClick ={this.state.onClickDel}>Delete</button>
-            <button onClick={() => {
-            this.state.switchMode(this.state.id)
-            this.setState({mode: !this.state.mode})}}>Edit</button></td>
+  goToEdit(){
+    this.setState({redirect: !this.state.redirect})
   }
 
   render(){
-    return <tr>
-      <td>{this.state.id+1}</td>
-      <td>{this.state.mode? this.InputName() : this.state.name}</td>
-      <td>{this.state.mode? this.InputEmail(): this.state.email}</td>
-      {this.state.mode? this.modeIsTrue() : this.modeIsFalse()}
-    </tr>
-  }
-}
-
-Entry.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  mode: PropTypes.bool.isRequired,
-  onClickDel: PropTypes.func.isRequired,
+    const {name, email, phone_number, address, ukey, del } = this.props
+    return(
+        <Card className="EntryCard">
+        <Card.Header></Card.Header>
+        <Card.Body>
+        <Card.Title>{name}</Card.Title>
+        <Row><Col><Card.Text>
+          Email ID: {email}
+        </Card.Text>
+        <Card.Text>
+          Phone Number: {phone_number}
+        </Card.Text></Col>
+        <Col><Card.Text className="Address">
+          {address}
+        </Card.Text></Col></Row>
+        </Card.Body>
+        <Card.Footer>
+          <Row><Col><Button block variant="primary" onClick ={this.goToEdit}>Edit</Button></Col>
+          {this.state.redirect && <Redirect to={{
+            pathname:'/edit',
+            name: name,
+            email: email,
+            phone_number: phone_number,
+            address: address,
+            ukey:ukey}}/>}
+          <Col><Button block onClick ={del} variant="secondary">Delete</Button></Col></Row>
+        </Card.Footer>
+        </Card>
+  )}
 }
 
 export default Entry
