@@ -11,8 +11,8 @@
 }
 
 .LoginForm{
-  margin-left: 17.5%;
-  margin-right: 17.5%;
+  margin-left: 10%;
+  margin-right: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,10 +46,6 @@
 }
 
 .SignupLink{
-
-  margin-left: 17.5%;
-  margin-right: 17.5%;
-  font-size: 3.5vmin;
   margin-top: 10px;
   text-align: center;
   font-weight: lighter;
@@ -68,4 +64,37 @@
   font-size: 2vmin;
   color: red;
   margin-bottom: 15px;
+}
+
+.profileButtons Button{
+  border: none;
+}
+
+.profileButtons Button:hover{
+  color: #007bff;
+  background-color: transparent;
+}
+
+.userprofile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userprofile Button{
+  margin-top: 10vh;
+  transform: scale(2)
+}
+
+.userprofile Button:hover{
+  transform: scale(2.1);
+}
+
+.Date {
+  text-align: center;
+}
+
+.Description .ql-container{
+  min-height: 10vmax;
 }

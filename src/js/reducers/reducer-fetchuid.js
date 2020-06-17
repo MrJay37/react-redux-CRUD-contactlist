@@ -1,4 +1,4 @@
-const uid = (uid =null, action) =>{
+const userid = (userid =null, action) =>{
   switch(action.type){
     case 'FETCHUID':
     const UID = JSON.parse(localStorage.getItem('user'))
@@ -8,8 +8,8 @@ const uid = (uid =null, action) =>{
     return null
 
     default:
-    return uid
+    return userid
   }
 }
 
-export default uid
+export default userid

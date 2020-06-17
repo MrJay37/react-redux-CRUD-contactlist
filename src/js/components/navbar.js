@@ -6,8 +6,11 @@ class NavBarBS extends React.Component{
   return(
     <>
       <Navbar  bg="dark" variant="dark">
-        <Nav.Link href="/" className="TopHead"><h1>FoneBooc</h1></Nav.Link>
-        {!this.props.isLoggedOut && <Button variant="outline-secondary" onClick={this.props.logout}>Log Out</Button>}
+        {this.props.isLoggedOut && <><br /><br /><br /></>}
+        {!this.props.isLoggedOut && <><Nav.Link href="/" className="TopHead"><h1>FoneBooc</h1></Nav.Link>
+        <div className="profileButtons">
+        <a href="/profile"><Button variant = "outline-primary" >Profile </Button></a>
+        <Button variant = "outline-secondary"  onClick={this.props.logout}>Log Out</Button></div></>}
       </Navbar>
     </>
   )}
