@@ -1,6 +1,5 @@
 export const addEntry = person => ({
-  type: 'ADD_ENTRY',
-  person
+  type: 'ADD_ENTRY', person
 })
 
 export const delEntry = key => ({
@@ -49,4 +48,8 @@ export const loginSuccess = () => ({
 
 export const loginError = () => ({
   type: 'LOGINERROR'
+})
+
+export const deleteProfile = () => ({
+  type: 'DELETEPROFILE'
 })

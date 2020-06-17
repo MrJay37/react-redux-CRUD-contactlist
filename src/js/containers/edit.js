@@ -4,6 +4,7 @@ import Edit from '../components/edit'
 
 
 const mapStateToProps = state => ({
+  isLoggedOut: state.isLoggedOut
 })
 
 const mapDispatchToProps = dispatch => ({

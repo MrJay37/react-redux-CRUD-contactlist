@@ -6,7 +6,8 @@ class SignUp extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      pwnot: false
+      pwnot: false,
+      signIn: false
     }
   }
   render(){
@@ -37,6 +38,8 @@ class SignUp extends React.Component {
       {this.state.pwnot && <h4 className="errorAlert">Passwords don't match</h4>}
       <Button type="submit">Submit</Button>
     </Form>
+    <h4 className="SignupLink">Sign in <button onClick={() => {this.props.isSigningUp(false) ;this.setState({signIn: true})}}>here</button></h4>
+    {this.state.signIn && <Redirect to='/' />}
     {!this.props.isSignUp && <Redirect to='/' />}
     </>
   }
