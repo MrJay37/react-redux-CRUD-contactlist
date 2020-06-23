@@ -1,13 +1,13 @@
-import { put, call, takeEvery } from 'redux-saga/effects';
+import { put, call, takeEvery, select } from 'redux-saga/effects';
 import rsf from '../config/config'
 import {updateList, fetchUID, loginSuccess, loginError} from '../actions'
+
+export const userid = state => state.userid
 
 export function* executeFunctionLogin(action){
   try{
     const loginmsg = yield call(rsf.auth.signInWithEmailAndPassword, action.email, action.pw)
-    yield localStorage.setItem('userProfile', JSON.stringify(loginmsg))
     yield localStorage.setItem('user', JSON.stringify(loginmsg.user))
-
     yield put(loginSuccess())
     yield put(updateList())
   }
@@ -40,13 +40,13 @@ export function* executeFunctionLogout(){
 
 export function* executeFunctionDelProf(){
   try{
-    const data = call(rsf.auth.deleteProfile)
+    const id = yield select(userid)
+    yield call(rsf.database.delete, '/contacts/'+ id )
+    yield call(rsf.auth.deleteProfile)
     yield localStorage.setItem('user', null)
     yield put(updateList())
-    console.log('Profile Deleted', data)
   }
   catch(error){
-    yield console.log("Delete Failed", error)
   }
 }
 

@@ -1,14 +1,18 @@
 import React from 'react'
 import { Form, Modal, Button, Col} from 'react-bootstrap'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
+import SlateComponent from './slate'
 
 class AddEntry extends React.Component{
   constructor(props){
     super(props)
       this.state ={
         show: false,
-        text: '',
+        text: [
+          {
+            type:'paragraph',
+            children:[{text: 'ssup' }]
+          }
+        ],
         wrongPhoneNo: false
       }
     this.handleClose=this.handleClose.bind(this)
@@ -52,7 +56,7 @@ class AddEntry extends React.Component{
         return
       }
 
-      const addRess = {streetOne: address.streetOne.value, streetTwo: address.streetTwo.value, city: address.city.value, state: address.state.value, zip: address.zip.value}
+      const Address = {streetOne: address.streetOne.value, streetTwo: address.streetTwo.value, city: address.city.value, state: address.state.value, zip: address.zip.value}
 
       if(!phone.number.value.trim()){
           return
@@ -60,7 +64,7 @@ class AddEntry extends React.Component{
 
       const phone_number = {code: phone.code.value, number: phone.number.value}
 
-      addEntry({name: name, email: em, phone_number: phone_number , address: addRess, date: date.value, description: this.state.text})
+      addEntry({name: name, email: em, phone_number: phone_number , address: Address, date: date.value, description: this.state.text})
       this.setState({show: false})
     }}>
     <Modal.Header closeButton>
@@ -142,10 +146,10 @@ class AddEntry extends React.Component{
     </Form.Row>
 
     <Form.Row>
-    <Form.Group as={Col}>
+    <Col>
       <Form.Label>Description</Form.Label>
-      <ReactQuill className="Description" value={this.state.text} onChange={e => this.setState({text: e})}/>
-      </Form.Group>
+      <SlateComponent value={this.state.text} onChange={(e) => this.setState({text: e})}/>
+      </Col>
     </Form.Row>
 
     </Modal.Body><Modal.Footer>

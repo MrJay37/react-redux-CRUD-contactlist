@@ -42,7 +42,7 @@
 }
 
 .modal-footer {
-    justify-content: flex-start !important;
+  justify-content: flex-start !important;
 }
 
 .SignupLink{
@@ -61,8 +61,8 @@
 
 .errorAlert{
   text-align: center;
-  font-size: 2vmin;
   color: red;
+  font-size: 1vmin;
   margin-bottom: 15px;
 }
 
@@ -97,4 +97,16 @@
 
 .Description .ql-container{
   min-height: 10vmax;
+}
+
+.SlateToolbar {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.SlateToolbar button{
+  min-width: 40px;
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {Form, Col, Button, Badge} from 'react-bootstrap'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
+import SlateComponent from './slate'
 
 class Edit extends React.Component{
   constructor(props){
@@ -170,7 +169,7 @@ class Edit extends React.Component{
     <Form.Row>
     <Form.Group as={Col}>
       <Form.Label>Description</Form.Label>
-      <ReactQuill className="Description" value={this.state.text} onChange ={e => this.setSTate({text: e})} />
+      <SlateComponent />
       </Form.Group>
     </Form.Row><br />
 

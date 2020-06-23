@@ -1,7 +1,8 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {Card, Accordion, Button,Col, Row} from 'react-bootstrap'
-import ReactHtmlParser from 'react-html-parser'
+import {Slate, withReact} from 'slate-react'
+import {createEditor} from 'slate'
 
 class Entry extends React.Component {
   constructor(props){
@@ -9,7 +10,7 @@ class Entry extends React.Component {
       this.state={
         redirect:false
     }
-
+    this.editor = withReact(createEditor())
     this.goToEdit = this.goToEdit.bind(this)
   }
   goToEdit(){
@@ -18,7 +19,6 @@ class Entry extends React.Component {
 
   render(){
     const {name, email, phone_number, address, date, description, ukey, del } = this.props
-
     return(
         <Card className="EntryCard">
         <Card.Header><Card.Title>{name.firstName + " " + name.lastName}</Card.Title></Card.Header>
@@ -43,7 +43,7 @@ class Entry extends React.Component {
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
-              <Card.Body>{ReactHtmlParser(description)}</Card.Body>
+              <Card.Body><Slate editor={this.editor} value={description}/></Card.Body>
             </Accordion.Collapse>
           </Card>
           </Accordion>
