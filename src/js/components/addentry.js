@@ -1,18 +1,13 @@
 import React from 'react'
 import { Form, Modal, Button, Col} from 'react-bootstrap'
-import SlateComponent from './slate'
+import {QuillEditorComponent} from './quill'
 
 class AddEntry extends React.Component{
   constructor(props){
     super(props)
       this.state ={
         show: false,
-        text: [
-          {
-            type:'paragraph',
-            children:[{text: 'ssup' }]
-          }
-        ],
+        text: [],
         wrongPhoneNo: false
       }
     this.handleClose=this.handleClose.bind(this)
@@ -22,8 +17,15 @@ class AddEntry extends React.Component{
   handleClose = () => this.setState({show:false})
   handleShow = () => this.setState({show:true})
 
+  shouldComponentUpdate(nextProps, nextState){
+    if(this.state.text !== nextState.text){
+      return false
+    }
+    else return true
+  }
+
   render(){
-  let firstName, lastName, email, phone = {code: '', number: ''}, address ={streetOne: '', streetTwo: '', city: '', state:'', zip:''}, date
+  let firstName, lastName, email, phone = {code: '', number: ''}, address = { streetOne: '', streetTwo: '', city: '', state:'', zip:''}, date
   const {addEntry} = this.props
 
   return (<>
@@ -144,11 +146,11 @@ class AddEntry extends React.Component{
       <Form.Control type="tel" ref={node => (phone.number = node)} />
       </Col>
     </Form.Row>
-
+    <br />
     <Form.Row>
     <Col>
       <Form.Label>Description</Form.Label>
-      <SlateComponent value={this.state.text} onChange={(e) => this.setState({text: e})}/>
+      <QuillEditorComponent onChange={(e) => {this.setState({text: e})}}/>
       </Col>
     </Form.Row>
 

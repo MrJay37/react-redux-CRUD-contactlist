@@ -7,9 +7,12 @@ class Home extends React.Component{
   render(){
     return(
       <><br />
-    {this.props.isLoggedOut ? <Login /> : <>
-    <AddEntry />
-    <EntryList /></>}
+    {this.props.isLoggedOut
+      ? <Login />
+      : <>
+          <AddEntry />
+          <EntryList />
+    </>}
     <br />
     </>
     )

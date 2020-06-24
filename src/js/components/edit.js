@@ -1,7 +1,7 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {Form, Col, Button, Badge} from 'react-bootstrap'
-import SlateComponent from './slate'
+import {QuillEditorComponent} from './quill'
 
 class Edit extends React.Component{
   constructor(props){
@@ -16,6 +16,13 @@ class Edit extends React.Component{
 
   submitForm(){
     this.setState({isSubmitted: !this.state.isSubmitted})
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    if(this.state.text !== nextState.text){
+      return false
+    }
+    else return true
   }
 
   render(){
@@ -80,6 +87,7 @@ class Edit extends React.Component{
 
       if(!fphone.number.value.trim()){
           ephone.number = phone_number.number
+          ephone.code = fphone.code.value
       } else if(fphone.number.value.length !== 10){ this.setState({wrongPhoneNo: true}); return}
       else{ephone = {code: fphone.code.value, number: fphone.number.value}}
 
@@ -165,18 +173,18 @@ class Edit extends React.Component{
       <Form.Control type="tel" ref={node => (fphone.number = node)} placeholder={phone_number.number} />
       </Col>
     </Form.Row>
-
+    <br />
     <Form.Row>
     <Form.Group as={Col}>
       <Form.Label>Description</Form.Label>
-      <SlateComponent />
+      <QuillEditorComponent delta={this.state.text} onChange={(e) => {this.setState({text: e})}} />
       </Form.Group>
     </Form.Row><br />
 
     <Form.Row>
       <Button variant="outline-primary" type="submit">Submit</Button>
       <Button variant="outline-secondary" onClick={() => this.setState({isSubmitted: true})} >Cancel</Button>
-    </Form.Row>
+    </Form.Row><br />
     </Form>
     {this.state.isSubmitted && <Redirect to="/" />}</div>
   )}

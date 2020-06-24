@@ -1,8 +1,7 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {Card, Accordion, Button,Col, Row} from 'react-bootstrap'
-import {Slate, withReact} from 'slate-react'
-import {createEditor} from 'slate'
+import {QuillViewerComponent} from './quill'
 
 class Entry extends React.Component {
   constructor(props){
@@ -10,7 +9,6 @@ class Entry extends React.Component {
       this.state={
         redirect:false
     }
-    this.editor = withReact(createEditor())
     this.goToEdit = this.goToEdit.bind(this)
   }
   goToEdit(){
@@ -43,7 +41,7 @@ class Entry extends React.Component {
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
-              <Card.Body><Slate editor={this.editor} value={description}/></Card.Body>
+              <Card.Body><QuillViewerComponent classID={'QVC' + this.props.classID.toString()} delta={description} /></Card.Body>
             </Accordion.Collapse>
           </Card>
           </Accordion>

@@ -2,7 +2,7 @@ import {Editor, Transforms } from 'slate';
 
 const LIST_TYPES = ['numbered-list', 'bulleted-list']
 
-const CustomEditor ={
+export const CustomEditor ={
   isMarkActive(editor, format) {
     const [match] = Editor.nodes(editor, {
       match: n => n[format]===true,
@@ -46,5 +46,3 @@ const CustomEditor ={
     }
   }
 }
-
-export default CustomEditor
