@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
-import CustomEditor from './customeditor'
+import {CustomEditor} from './customeditor'
 
 export const MenuButton = props => (
   <Button variant="secondary"

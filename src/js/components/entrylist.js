@@ -13,6 +13,7 @@ class EntryList extends React.Component {
     return<div>
     {nameList.map((name, id)=>
       <Entry key={id}
+        classID={id}
         ukey={usid[id]}
         {...name}
         del={() => delEntry(usid[id])}/>)}

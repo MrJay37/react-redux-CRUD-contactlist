@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback } from 'react'
 import {createEditor} from 'slate'
 import {Slate, Editable, withReact } from 'slate-react'
-import CustomEditor from './customeditor'
+import { CustomEditor } from './customeditor'
 import {MenuButton, BlockButton} from './menubuttons'
 import {ButtonToolbar, ButtonGroup } from 'react-bootstrap'
 
@@ -28,7 +28,7 @@ const SlateComponent = (props) => {
         <BlockButton editor={editor} format="numbered-list" label='123' />{' '}
         <BlockButton editor={editor} format="bulleted-list" label='&#x26AB;' />{' '}
       </ButtonGroup></ButtonToolbar><hr />
-      <Editable
+     <Editable
         renderElement={renderElement}
         renderLeaf = {renderLeaf}
         onKeyDown={(e)=> {
